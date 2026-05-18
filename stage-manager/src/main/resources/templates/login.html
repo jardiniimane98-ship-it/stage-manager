@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Connexion - Stage Manager</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+
+            min-height: 100vh;
+
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+        }
+
+        .login-card {
+
+            width: 420px;
+
+            background: rgba(255,255,255,0.12);
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+
+        }
+
+        .login-card h2 {
+
+            text-align: center;
+
+            font-weight: 700;
+
+            margin-bottom: 30px;
+
+        }
+
+        .form-control {
+
+            border-radius: 14px;
+
+            padding: 14px;
+
+        }
+
+        .btn-login {
+
+            border-radius: 14px;
+
+            padding: 13px;
+
+            font-weight: 600;
+
+        }
+
+        .back-link {
+
+            color: #bfdbfe;
+
+            text-decoration: none;
+
+        }
+
+        .back-link:hover {
+
+            color: white;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <h2>Connexion</h2>
+
+    <form action="/dashboard" method="get">
+
+        <div class="mb-3">
+
+            <label class="form-label">Adresse email</label>
+
+            <input type="email" class="form-control" placeholder="exemple@ehtp.ac.ma">
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">Mot de passe</label>
+
+            <input type="password" class="form-control" placeholder="Votre mot de passe">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 btn-login">
+
+            Se connecter
+
+        </button>
+
+    </form>
+
+    <div class="text-center mt-4">
+
+        <a href="/" class="back-link">← Retour à l’accueil</a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

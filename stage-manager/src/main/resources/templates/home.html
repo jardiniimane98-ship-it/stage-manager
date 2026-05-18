@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EHTP Stage Manager</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+
+            margin:0;
+
+            min-height:100vh;
+
+            font-family:Arial,sans-serif;
+
+            background:linear-gradient(135deg,#020617,#1e3a8a,#2563eb);
+
+            color:white;
+
+        }
+
+        .hero{
+
+            min-height:100vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            text-align:center;
+
+            padding:30px;
+
+        }
+
+        .hero-card{
+
+            background:rgba(255,255,255,0.10);
+
+            backdrop-filter:blur(18px);
+
+            border:1px solid rgba(255,255,255,0.20);
+
+            border-radius:35px;
+
+            padding:50px;
+
+            max-width:850px;
+
+            box-shadow:0 25px 60px rgba(0,0,0,0.35);
+
+        }
+
+        .logo-box{
+
+            width:130px;
+
+            height:130px;
+
+            background:white;
+
+            border-radius:50%;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            margin:0 auto 25px;
+
+            box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+            overflow:hidden;
+
+        }
+
+        .logo-box img{
+
+            width:160px;
+
+        }
+
+        h1{
+
+            font-size:70px;
+
+            font-weight:800;
+
+            margin-bottom:20px;
+
+        }
+
+        p{
+
+            font-size:22px;
+
+            color:#e5e7eb;
+
+        }
+
+        .btn-custom{
+
+            padding:14px 35px;
+
+            border-radius:35px;
+
+            font-size:18px;
+
+            margin:10px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="hero-card">
+
+        <div class="logo-box">
+
+            <img src="/images/logo-ehtp.png"
+
+                 alt="Logo EHTP">
+
+        </div>
+
+        <h1>Gestion des Stages</h1>
+
+        <p>
+
+            Plateforme professionnelle de gestion des stages étudiants
+
+        </p>
+
+        <div class="mt-4">
+
+            <a href="/login"
+
+               class="btn btn-primary btn-custom">
+
+                Connexion
+
+            </a>
+
+            <a href="/register"
+
+               class="btn btn-outline-light btn-custom">
+
+                Inscription
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

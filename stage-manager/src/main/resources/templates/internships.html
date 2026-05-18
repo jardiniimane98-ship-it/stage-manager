@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Stages - EHTP Stage</title>
+
+    <style>
+
+        *{
+
+            margin:0;
+
+            padding:0;
+
+            box-sizing:border-box;
+
+            font-family:Arial;
+
+        }
+
+        body{
+
+            background:#f4f6f9;
+
+            display:flex;
+
+        }
+
+        .sidebar{
+
+            width:250px;
+
+            height:100vh;
+
+            background:linear-gradient(180deg,#090979,#020024);
+
+            padding:30px;
+
+            color:white;
+
+        }
+
+        .sidebar h2{
+
+            margin-bottom:40px;
+
+        }
+
+        .sidebar a{
+
+            display:block;
+
+            color:white;
+
+            text-decoration:none;
+
+            margin:25px 0;
+
+            font-size:18px;
+
+        }
+
+        .content{
+
+            flex:1;
+
+            padding:40px;
+
+        }
+
+        .title{
+
+            font-size:45px;
+
+            font-weight:bold;
+
+            margin-bottom:30px;
+
+        }
+
+        table{
+
+            width:100%;
+
+            background:white;
+
+            border-radius:15px;
+
+            overflow:hidden;
+
+            border-collapse:collapse;
+
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+        }
+
+        th{
+
+            background:#090979;
+
+            color:white;
+
+            padding:20px;
+
+            text-align:left;
+
+        }
+
+        td{
+
+            padding:20px;
+
+            border-bottom:1px solid #eee;
+
+        }
+
+        .status{
+
+            padding:8px 15px;
+
+            border-radius:20px;
+
+            color:white;
+
+            font-size:14px;
+
+        }
+
+        .active{
+
+            background:green;
+
+        }
+
+        .pending{
+
+            background:orange;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>EHTP Stage</h2>
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/students">Étudiants</a>
+
+    <a href="/internships">Stages</a>
+
+    <a href="/companies">Entreprises</a>
+
+    <a href="/home">Accueil</a>
+
+</div>
+
+<div class="content">
+
+    <div class="title">
+
+        Gestion des Stages
+
+    </div>
+
+    <table>
+
+        <tr>
+
+            <th>Étudiant</th>
+
+            <th>Entreprise</th>
+
+            <th>Sujet</th>
+
+            <th>Statut</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Imane Jardini</td>
+
+            <td>OCP</td>
+
+            <td>Application RH</td>
+
+            <td>
+
+                <span class="status active">
+
+                    Accepté
+
+                </span>
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Salma Alami</td>
+
+            <td>ONCF</td>
+
+            <td>Gestion documentaire</td>
+
+            <td>
+
+                <span class="status pending">
+
+                    En attente
+
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

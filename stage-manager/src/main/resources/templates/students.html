@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Étudiants - EHTP Stage</title>
+
+    <style>
+
+        *{
+
+            margin:0;
+
+            padding:0;
+
+            box-sizing:border-box;
+
+            font-family:Arial;
+
+        }
+
+        body{
+
+            background:#f4f6f9;
+
+            display:flex;
+
+        }
+
+        .sidebar{
+
+            width:250px;
+
+            height:100vh;
+
+            background:linear-gradient(180deg,#090979,#020024);
+
+            padding:30px;
+
+            color:white;
+
+        }
+
+        .sidebar h2{
+
+            margin-bottom:40px;
+
+        }
+
+        .sidebar a{
+
+            display:block;
+
+            color:white;
+
+            text-decoration:none;
+
+            margin:25px 0;
+
+            font-size:18px;
+
+        }
+
+        .content{
+
+            flex:1;
+
+            padding:40px;
+
+        }
+
+        .header{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            margin-bottom:30px;
+
+        }
+
+        .title{
+
+            font-size:45px;
+
+            font-weight:bold;
+
+        }
+
+        .btn-add{
+
+            background:#090979;
+
+            color:white;
+
+            border:none;
+
+            padding:14px 25px;
+
+            border-radius:12px;
+
+            font-size:16px;
+
+            cursor:pointer;
+
+        }
+
+        table{
+
+            width:100%;
+
+            background:white;
+
+            border-radius:15px;
+
+            overflow:hidden;
+
+            border-collapse:collapse;
+
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+        }
+
+        th{
+
+            background:#090979;
+
+            color:white;
+
+            padding:20px;
+
+            text-align:left;
+
+        }
+
+        td{
+
+            padding:20px;
+
+            border-bottom:1px solid #eee;
+
+        }
+
+        .btn-edit{
+
+            background:#2563eb;
+
+            color:white;
+
+            border:none;
+
+            padding:8px 14px;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+        }
+
+        .btn-delete{
+
+            background:#dc2626;
+
+            color:white;
+
+            border:none;
+
+            padding:8px 14px;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+        }
+
+        .modal{
+
+            display:none;
+
+            position:fixed;
+
+            top:0;
+
+            left:0;
+
+            width:100%;
+
+            height:100%;
+
+            background:rgba(0,0,0,0.5);
+
+            justify-content:center;
+
+            align-items:center;
+
+        }
+
+        .modal-content{
+
+            width:450px;
+
+            background:white;
+
+            padding:30px;
+
+            border-radius:20px;
+
+        }
+
+        .modal-content h2{
+
+            margin-bottom:20px;
+
+        }
+
+        .modal-content input{
+
+            width:100%;
+
+            padding:14px;
+
+            margin-bottom:15px;
+
+            border:1px solid #ddd;
+
+            border-radius:10px;
+
+        }
+
+        .btn-save{
+
+            background:#16a34a;
+
+            color:white;
+
+            border:none;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            cursor:pointer;
+
+        }
+
+        .btn-close{
+
+            background:#6b7280;
+
+            color:white;
+
+            border:none;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            cursor:pointer;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>EHTP Stage</h2>
+
+    <a href="/dashboard">Dashboard</a>
+
+    <a href="/students">Étudiants</a>
+
+    <a href="/internships">Stages</a>
+
+    <a href="/companies">Entreprises</a>
+
+    <a href="/home">Accueil</a>
+
+</div>
+
+<div class="content">
+
+    <div class="header">
+
+        <div class="title">Gestion des Étudiants</div>
+
+        <button class="btn-add" onclick="openModal()">+ Ajouter étudiant</button>
+
+    </div>
+
+    <table id="studentsTable">
+
+        <tr>
+
+            <th>Nom</th>
+
+            <th>Email</th>
+
+            <th>Filière</th>
+
+            <th>Niveau</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Imane Jardini</td>
+
+            <td>imane@ehtp.ac.ma</td>
+
+            <td>GI</td>
+
+            <td>4ème année</td>
+
+            <td>
+
+                <button class="btn-edit">Modifier</button>
+
+                <button class="btn-delete" onclick="deleteRow(this)">Supprimer</button>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="modal" id="studentModal">
+
+    <div class="modal-content">
+
+        <h2>Ajouter un étudiant</h2>
+
+        <input type="text" id="nom" placeholder="Nom complet">
+
+        <input type="email" id="email" placeholder="Email">
+
+        <input type="text" id="filiere" placeholder="Filière">
+
+        <input type="text" id="niveau" placeholder="Niveau">
+
+        <button class="btn-save" onclick="addStudent()">Enregistrer</button>
+
+        <button class="btn-close" onclick="closeModal()">Annuler</button>
+
+    </div>
+
+</div>
+
+<script>
+
+    let currentRow = null;
+
+    function openModal() {
+
+        currentRow = null;
+
+        document.querySelector(".modal-content h2").innerText = "Ajouter un étudiant";
+
+        document.getElementById("nom").value = "";
+
+        document.getElementById("email").value = "";
+
+        document.getElementById("filiere").value = "";
+
+        document.getElementById("niveau").value = "";
+
+        document.getElementById("studentModal").style.display = "flex";
+
+    }
+
+    function closeModal() {
+
+        document.getElementById("studentModal").style.display = "none";
+
+    }
+
+    function addStudent() {
+
+        let nom = document.getElementById("nom").value;
+
+        let email = document.getElementById("email").value;
+
+        let filiere = document.getElementById("filiere").value;
+
+        let niveau = document.getElementById("niveau").value;
+
+        if (nom === "" || email === "" || filiere === "" || niveau === "") {
+
+            alert("Veuillez remplir tous les champs");
+
+            return;
+
+        }
+
+        if (currentRow !== null) {
+
+            currentRow.cells[0].innerText = nom;
+
+            currentRow.cells[1].innerText = email;
+
+            currentRow.cells[2].innerText = filiere;
+
+            currentRow.cells[3].innerText = niveau;
+
+        } else {
+
+            let table = document.getElementById("studentsTable");
+
+            let row = table.insertRow(-1);
+
+            row.innerHTML = `
+
+                <td>${nom}</td>
+
+                <td>${email}</td>
+
+                <td>${filiere}</td>
+
+                <td>${niveau}</td>
+
+                <td>
+
+                    <button class="btn-edit" onclick="editRow(this)">Modifier</button>
+
+                    <button class="btn-delete" onclick="deleteRow(this)">Supprimer</button>
+
+                </td>
+
+            `;
+
+        }
+
+        closeModal();
+
+    }
+
+    function editRow(button) {
+
+        currentRow = button.parentElement.parentElement;
+
+        document.querySelector(".modal-content h2").innerText = "Modifier un étudiant";
+
+        document.getElementById("nom").value = currentRow.cells[0].innerText;
+
+        document.getElementById("email").value = currentRow.cells[1].innerText;
+
+        document.getElementById("filiere").value = currentRow.cells[2].innerText;
+
+        document.getElementById("niveau").value = currentRow.cells[3].innerText;
+
+        document.getElementById("studentModal").style.display = "flex";
+
+    }
+
+    function deleteRow(button) {
+
+        button.parentElement.parentElement.remove();
+
+    }
+
+</script>
+
+</body>
+
+</html>

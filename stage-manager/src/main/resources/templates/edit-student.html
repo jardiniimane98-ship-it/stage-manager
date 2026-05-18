@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Modifier étudiant</title>
+
+</head>
+
+<body>
+
+<h1>Modifier étudiant</h1>
+
+<form th:action="@{'/students-db/update/' + ${student.id}}" th:object="${student}" method="post">
+
+    <input type="text" th:field="*{nom}" placeholder="Nom" required>
+
+    <input type="email" th:field="*{email}" placeholder="Email" required>
+
+    <input type="text" th:field="*{filiere}" placeholder="Filière" required>
+
+    <input type="text" th:field="*{niveau}" placeholder="Niveau" required>
+
+    <button type="submit">Enregistrer</button>
+
+</form>
+
+<br>
+
+<a href="/students-db">Retour</a>
+
+</body>
+
+</html>
