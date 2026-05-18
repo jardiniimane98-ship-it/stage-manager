@@ -1,0 +1,45 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Build') {
+
+            steps {
+
+                bat 'mvn clean install'
+
+            }
+
+        }
+
+        stage('Test') {
+
+            steps {
+
+                bat 'mvn test'
+
+            }
+
+        }
+
+    }
+
+    post {
+
+        success {
+
+            echo 'Build successful'
+
+        }
+
+        failure {
+
+            echo 'Build failed'
+
+        }
+
+    }
+
+}
